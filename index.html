@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Web Antrian Klinik</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <div class="container">
+    <header>
+      <h1>Web Antrian Klinik</h1>
+      <p class="muted">Input data pasien, ambil nomor antrian, lalu lihat daftar antrian.</p>
+    </header>
+
+    <section class="card">
+      <h2>Form Pasien</h2>
+
+      <form id="formAntrian" class="form">
+        <label>
+          Nama
+          <input type="text" id="nama" placeholder="Nama pasien" required />
+        </label>
+
+        <label>
+          Umur
+          <input type="number" id="umur" placeholder="Contoh: 20" min="0" required />
+        </label>
+
+        <label>
+          Keluhan
+          <textarea id="keluhan" placeholder="Contoh: demam, batuk..." required></textarea>
+        </label>
+
+        <button type="submit" class="btn">Ambil Antrian</button>
+        <p id="status" class="muted"></p>
+      </form>
+    </section>
+
+    <section class="card">
+      <div class="row">
+        <h2>Daftar Antrian</h2>
+        <button id="btnRefresh" class="btn ghost" type="button">Refresh</button>
+      </div>
+
+      <div class="tableWrap">
+        <table>
+          <thead>
+            <tr>
+              <th>No</th>
+              <th>Nama</th>
+              <th>Keluhan</th>
+              <th>Status</th>
+              <th>Aksi</th>
+            </tr>
+          </thead>
+          <tbody id="listAntrian">
+            <!-- diisi oleh JS -->
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+    <footer class="muted">
+      <span>© <span id="year"></span> Web Antrian Klinik</span>
+    </footer>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
