@@ -96,14 +96,14 @@ app.delete("/api/antrian/:nomor", (req, res) => {
   res.json({ message: "Antrian berhasil dihapus", nomor });
 });
 
-app.put("/api/antrian/:id/layani", (req, res) => {
-  const { id } = req.params;
+app.put("/api/antrian/:nomor/layani", (req, res) => {
+  const { nomor } = req.params;
 
   const result = db.prepare(`
     UPDATE antrian
     SET status = 'SELESAI'
-    WHERE id = ?
-  `).run(id);
+    WHERE nomor = ?
+  `).run(nomor);
 
   if (result.changes === 0) {
     return res.status(404).json({ error: "Antrian tidak ditemukan" });
