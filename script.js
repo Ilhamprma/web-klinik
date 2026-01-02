@@ -48,6 +48,20 @@ function loadLocalState() {
   return raw ? JSON.parse(raw) : null;
 }
 
+async function layaniAntrian(nomor) {
+    const res = await fetch(`/api/antrian/${nomor}/layani`, {
+        method: "PUT"
+    });
+
+    if (!res.ok) {
+        throw new Error("Gagal melayani antrian");
+    }
+
+    setStatus(`Antrian #${nomor} sudah dilayani`);
+    await refreshTable();
+}
+
+
 function clearForm() {
   document.getElementById("nama").value = "";
   document.getElementById("umur").value = "";
